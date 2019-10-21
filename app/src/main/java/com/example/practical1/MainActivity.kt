@@ -18,27 +18,62 @@ class MainActivity : AppCompatActivity() {
 
         val countUpButton: Button = findViewById(R.id.count_up_button)
         countUpButton.setOnClickListener { countUp() }
+
+        val resetButton: Button = findViewById(R.id.reset_button)
+        resetButton.setOnClickListener { resetNum() }
     }
 
     private fun rollDice() {
-        val randomInt = Random().nextInt(6) + 1
-        //Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show()
         val resultText: TextView = findViewById(R.id.result_text)
-        resultText.text = randomInt.toString()
+        val resultText1: TextView = findViewById(R.id.result_text1)
+        val resultText2: TextView = findViewById(R.id.result_text2)
+
+        //Toast.makeText(this, "Button clicked", Toast.LENGTH_SHORT).show()
+        resultText.text = (Random().nextInt(6) + 1).toString()
+        resultText1.text = (Random().nextInt(6) + 1).toString()
+        resultText2.text = (Random().nextInt(6) + 1).toString()
     }
 
     private fun countUp() {
         val resultText: TextView = findViewById(R.id.result_text)
-        if (resultText.text == "Hello World!"){
+        val resultText1: TextView = findViewById(R.id.result_text1)
+        val resultText2: TextView = findViewById(R.id.result_text2)
+
+        if (resultText.text == ""){
             resultText.text = "1"
         }else {
-            var resultInt = resultText.text.toString().toInt()
+            val resultInt = resultText.text.toString().toInt()
             if (resultText.text != "6") {
                 resultText.text = resultInt.inc().toString()
             }
-            else{
-                Toast.makeText(this, "Number has reached 6!", Toast.LENGTH_SHORT).show()
+        }
+
+        if (resultText1.text == "Hello World!"){
+            resultText1.text = "1"
+        }else {
+            val resultInt = resultText1.text.toString().toInt()
+            if (resultText1.text != "6") {
+                resultText1.text = resultInt.inc().toString()
             }
         }
+
+        if (resultText2.text == ""){
+            resultText2.text = "1"
+        }else {
+            val resultInt = resultText2.text.toString().toInt()
+            if (resultText2.text != "6") {
+                resultText2.text = resultInt.inc().toString()
+            }
+        }
+    }
+
+    private fun resetNum(){
+        val resultText: TextView = findViewById(R.id.result_text)
+        val resultText1: TextView = findViewById(R.id.result_text1)
+        val resultText2: TextView = findViewById(R.id.result_text2)
+
+        resultText.text = "0"
+        resultText1.text = "0"
+        resultText2.text = "0"
     }
 }
